@@ -36,6 +36,34 @@ def ensure_database(db_name):
             print(f"Database {db_name} already exists")
 
 
+def run_sql_file(engine, path):
+    """Run a .sql file (several statements) in one transaction."""
+    with open(path, encoding="utf-8") as f:
+        sql = f.read()
+    raw = engine.raw_connection()
+    try:
+        raw.cursor().execute(sql)
+        raw.commit()
+    finally:
+        raw.close()
+
+
+def copy_df(engine, df, table):
+    """Fast bulk load of a DataFrame into an existing table with COPY. Missing values become NULL."""
+    import io
+
+    buf = io.StringIO()
+    df.to_csv(buf, index=False, header=False, na_rep="")
+    buf.seek(0)
+    cols = ", ".join(f'"{c}"' for c in df.columns)
+    raw = engine.raw_connection()
+    try:
+        raw.cursor().copy_expert(f'COPY {table} ({cols}) FROM STDIN WITH (FORMAT csv)', buf)
+        raw.commit()
+    finally:
+        raw.close()
+
+
 if __name__ == "__main__":
     with get_engine().connect() as c:
         print("Connected to:", c.execute(text("select current_database(), version()")).fetchone())

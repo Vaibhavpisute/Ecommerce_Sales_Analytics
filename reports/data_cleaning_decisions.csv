@@ -1,0 +1,12 @@
+decision,title,rows_affected,action
+1,Orders without items,775,"Kept the orders. Set item_count, items_value and freight_value to 0 and added the flag has_items = False."
+2,Which orders count as a sale,1242,"Added the flag is_valid_sale (has items and status is not canceled or unavailable). Orders in other states (created, approved, invoiced, processing, shipped) stay valid because they are real, paid-for orders."
+3,Delivery date does not match the status,14,"Kept the rows. delivery_days, delay_days and is_late are filled only when the status is delivered AND the delivery date exists."
+4,Dates in the wrong order,189,Kept the rows and added the flag flag_ts_inconsistent. No date was changed.
+5,Installments below 1,2,Set the installments to 1.
+6,Payments with value 0,9,"Kept them. The order value is the sum of its payments, so a 0 payment adds nothing."
+7,More than one review for an order,551,Kept one review per order: the most recently answered one. The order-level review_score now comes from this review.
+8,Products without a category,610,Category stays 'unknown' (set by the Spark job). Missing weight and photo counts stay empty.
+9,One person has many customer_id values,3345,"dim_customer has one row per customer_unique_id (city, state and zip of the latest order). fact_orders keeps both ids. All repeat, cohort and RFM logic will use customer_unique_id."
+10,Price and order value outliers,8427,"Flagged only (flag_price_outlier, flag_value_outlier). No row was removed or changed."
+11,Incomplete months at the start and end,294,Kept all rows. dim_date has the flag in_analysis_period for the full months 2017-01 to 2018-08.
