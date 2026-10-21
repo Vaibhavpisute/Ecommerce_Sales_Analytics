@@ -11,3 +11,10 @@ __pycache__/
 **/.pbi/
 **/cache.abf
 excel/~$*
+
+# Power BI model data: regenerate with powerbi/export_model_data.py (see powerbi/POWERBI_STEPS.md)
+powerbi/data/
+# Desktop copy of the project saved by hand as "dashboard" (duplicate of EcommerceSales.*)
+powerbi/dashboard.Report/
+powerbi/dashboard.SemanticModel/
+powerbi/dashboard.pbip

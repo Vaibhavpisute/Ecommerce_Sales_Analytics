@@ -1,0 +1,84 @@
+table dim_customer
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: customer_key
+
+	column state
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: state
+
+	column first_order_month
+		dataType: dateTime
+		formatString: yyyy-mm
+		summarizeBy: none
+		sourceColumn: first_order_month
+
+	column order_count
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: order_count
+
+	column revenue
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: revenue
+
+	column recency_days
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: recency_days
+
+	column r_score
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: r_score
+
+	column f_score
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: f_score
+
+	column m_score
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: m_score
+
+	column rfm_score
+		dataType: string
+		summarizeBy: none
+		sourceColumn: rfm_score
+
+	column segment
+		dataType: string
+		sortByColumn: segment_order
+		summarizeBy: none
+		sourceColumn: segment
+
+	column segment_order
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: segment_order
+
+	partition dim_customer = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, "\") & "\dim_customer.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+			    ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {{"customer_key", Int64.Type}, {"state", type text}, {"first_order_month", type date}, {"order_count", Int64.Type}, {"revenue", type number}, {"recency_days", Int64.Type}, {"r_score", Int64.Type}, {"f_score", Int64.Type}, {"m_score", Int64.Type}, {"rfm_score", type text}, {"segment", type text}, {"segment_order", Int64.Type}}, "en-US")
+			in
+			    ChangedTypes

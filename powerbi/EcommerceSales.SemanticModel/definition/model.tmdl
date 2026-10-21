@@ -1,0 +1,18 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table dim_date
+ref table dim_state
+ref table dim_customer
+ref table dim_product
+ref table fact_orders
+ref table fact_order_items
+ref table cohort_retention
+ref table top_customers
+ref table low_performers

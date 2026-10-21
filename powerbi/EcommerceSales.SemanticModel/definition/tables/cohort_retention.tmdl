@@ -1,0 +1,45 @@
+table cohort_retention
+
+	/// Customers of the cohort who ordered again in the month, as a share of the cohort (SQL Q11).
+	measure 'Cohort Retention %' = DIVIDE(SUM(cohort_retention[active_customers]), SUM(cohort_retention[cohort_size]))
+		formatString: 0.00%
+		displayFolder: Customers
+
+	column cohort_month
+		dataType: string
+		summarizeBy: none
+		sourceColumn: cohort_month
+
+	column month_index
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: month_index
+
+	column cohort_size
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: cohort_size
+
+	column active_customers
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: active_customers
+
+	column retention_pct
+		dataType: double
+		formatString: 0.00
+		summarizeBy: none
+		sourceColumn: retention_pct
+
+	partition cohort_retention = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, "\") & "\cohort_retention.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+			    ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {{"cohort_month", type text}, {"month_index", Int64.Type}, {"cohort_size", Int64.Type}, {"active_customers", Int64.Type}, {"retention_pct", type number}}, "en-US")
+			in
+			    ChangedTypes

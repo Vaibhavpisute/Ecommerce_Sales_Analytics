@@ -1,0 +1,27 @@
+relationship fact_orders_purchase_date_to_dim_date_date
+	fromColumn: fact_orders.purchase_date
+	toColumn: dim_date.date
+
+relationship fact_orders_customer_key_to_dim_customer_customer_key
+	fromColumn: fact_orders.customer_key
+	toColumn: dim_customer.customer_key
+
+relationship dim_customer_state_to_dim_state_state
+	fromColumn: dim_customer.state
+	toColumn: dim_state.state
+
+relationship fact_order_items_order_key_to_fact_orders_order_key
+	fromColumn: fact_order_items.order_key
+	toColumn: fact_orders.order_key
+
+relationship fact_order_items_product_key_to_dim_product_product_key
+	fromColumn: fact_order_items.product_key
+	toColumn: dim_product.product_key
+
+relationship top_customers_customer_key_to_dim_customer_customer_key
+	fromColumn: top_customers.customer_key
+	toColumn: dim_customer.customer_key
+
+relationship low_performers_product_key_to_dim_product_product_key
+	fromColumn: low_performers.product_key
+	toColumn: dim_product.product_key

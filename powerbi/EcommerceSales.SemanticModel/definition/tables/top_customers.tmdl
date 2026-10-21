@@ -1,0 +1,71 @@
+table top_customers
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: customer_key
+
+	column customer_unique_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+	column revenue_rank
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: revenue_rank
+
+	column orders
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: orders
+
+	column clv_revenue
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: clv_revenue
+
+	column avg_order_value
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: avg_order_value
+
+	column first_order_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: first_order_date
+
+	column last_order_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: last_order_date
+
+	column active_days
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: active_days
+
+	column cumulative_revenue_share_pct
+		dataType: double
+		formatString: 0.00
+		summarizeBy: none
+		sourceColumn: cumulative_revenue_share_pct
+
+	partition top_customers = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, "\") & "\top_customers.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+			    ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {{"customer_key", Int64.Type}, {"customer_unique_id", type text}, {"revenue_rank", Int64.Type}, {"orders", Int64.Type}, {"clv_revenue", type number}, {"avg_order_value", type number}, {"first_order_date", type date}, {"last_order_date", type date}, {"active_days", Int64.Type}, {"cumulative_revenue_share_pct", type number}}, "en-US")
+			in
+			    ChangedTypes

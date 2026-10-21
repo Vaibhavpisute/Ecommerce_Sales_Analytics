@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "c1_table_top",
+  "position": {
+    "x": 880,
+    "y": 444,
+    "z": 14,
+    "height": 266,
+    "width": 380,
+    "tabOrder": 14
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "top_customers"
+                    }
+                  },
+                  "Property": "revenue_rank"
+                }
+              },
+              "queryRef": "top_customers.revenue_rank",
+              "nativeQueryRef": "revenue_rank"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "top_customers"
+                    }
+                  },
+                  "Property": "orders"
+                }
+              },
+              "queryRef": "top_customers.orders",
+              "nativeQueryRef": "orders"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "top_customers"
+                    }
+                  },
+                  "Property": "clv_revenue"
+                }
+              },
+              "queryRef": "top_customers.clv_revenue",
+              "nativeQueryRef": "clv_revenue"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "top_customers"
+                  }
+                },
+                "Property": "revenue_rank"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top customers by revenue (top 5%, from Q13)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

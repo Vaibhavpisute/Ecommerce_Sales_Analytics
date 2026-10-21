@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "c1_card_2",
+  "position": {
+    "x": 330,
+    "y": 84,
+    "z": 2,
+    "height": 86,
+    "width": 300,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_orders"
+                    }
+                  },
+                  "Property": "Customers with 2+ Orders"
+                }
+              },
+              "queryRef": "fact_orders.Customers with 2+ Orders",
+              "nativeQueryRef": "Customers with 2+ Orders"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

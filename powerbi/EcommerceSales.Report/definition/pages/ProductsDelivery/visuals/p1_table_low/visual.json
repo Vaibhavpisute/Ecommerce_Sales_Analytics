@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "p1_table_low",
+  "position": {
+    "x": 870,
+    "y": 394,
+    "z": 15,
+    "height": 316,
+    "width": 390,
+    "tabOrder": 15
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_product"
+                    }
+                  },
+                  "Property": "category"
+                }
+              },
+              "queryRef": "dim_product.category",
+              "nativeQueryRef": "category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "low_performers"
+                    }
+                  },
+                  "Property": "reviewed_orders"
+                }
+              },
+              "queryRef": "low_performers.reviewed_orders",
+              "nativeQueryRef": "reviewed_orders"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "low_performers"
+                    }
+                  },
+                  "Property": "avg_rating"
+                }
+              },
+              "queryRef": "low_performers.avg_rating",
+              "nativeQueryRef": "avg_rating"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "low_performers"
+                    }
+                  },
+                  "Property": "low_score_pct"
+                }
+              },
+              "queryRef": "low_performers.low_score_pct",
+              "nativeQueryRef": "low_score_pct"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "low_performers"
+                  }
+                },
+                "Property": "avg_rating"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Low performers: many orders, low rating (Q8)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,176 @@
+table fact_orders
+
+	/// Average review score (1 to 5).
+	measure 'Average Review Score' = AVERAGE(fact_orders[review_score])
+		formatString: 0.00
+		displayFolder: Quality
+
+	/// Share of delivered orders that arrived after the estimated date.
+	measure 'Late Delivery Rate' = AVERAGE(fact_orders[late_flag])
+		formatString: 0.0%
+		displayFolder: Quality
+
+	/// Days from purchase to delivery.
+	measure 'Average Delivery Days' = AVERAGE(fact_orders[delivery_days])
+		formatString: 0.0
+		displayFolder: Quality
+
+	/// Average review score of delivered orders (empty for orders that were not delivered).
+	measure 'Avg Review by Delay' = CALCULATE(AVERAGE(fact_orders[review_score]), fact_orders[delay_bucket_order] <= 5)
+		formatString: 0.00
+		displayFolder: Quality
+
+	/// Share of reviews with score 1 or 2, delivered orders only.
+	measure 'Low Review Share by Delay' = CALCULATE(AVERAGE(fact_orders[low_review_flag]), fact_orders[delay_bucket_order] <= 5)
+		formatString: 0.0%
+		displayFolder: Quality
+
+	/// Customers (customer_unique_id) with at least one valid order in scope.
+	measure 'Active Customers' = DISTINCTCOUNT(fact_orders[customer_key])
+		formatString: #,0
+		displayFolder: Customers
+
+	/// Customers whose first order month is inside the selected months (same rule as SQL Q9).
+	measure 'New Customers' =
+			VAR firstMonth = MIN(dim_date[month_start])
+			VAR lastMonth = MAX(dim_date[month_start])
+			RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_orders[customer_key]),
+			        FILTER(
+			            ALL(dim_customer[first_order_month]),
+			            dim_customer[first_order_month] >= firstMonth && dim_customer[first_order_month] <= lastMonth
+			        )
+			    )
+		formatString: #,0
+		displayFolder: Customers
+
+	/// Active customers who first bought in an earlier month (same rule as SQL Q9).
+	measure 'Repeat Customers' = [Active Customers] - [New Customers]
+		formatString: #,0
+		displayFolder: Customers
+
+	/// Share of active customers who first bought earlier (SQL Q9 repeat_customer_pct).
+	measure 'Returning Customer % (period)' = DIVIDE([Repeat Customers], [Active Customers])
+		formatString: 0.0%
+		displayFolder: Customers
+
+	/// Customers with 2 or more valid orders in the whole data (SQL Q10 repeat_customers when nothing is filtered).
+	measure 'Customers with 2+ Orders' = CALCULATE(DISTINCTCOUNT(fact_orders[customer_key]), dim_customer[order_count] >= 2)
+		formatString: #,0
+		displayFolder: Customers
+
+	/// Customers with exactly one valid order (SQL Q10 customers_with_1_order when nothing is filtered).
+	measure 'One-time Customers' = CALCULATE(DISTINCTCOUNT(fact_orders[customer_key]), dim_customer[order_count] = 1)
+		formatString: #,0
+		displayFolder: Customers
+
+	/// Share of customers with 2 or more valid orders in the whole data (SQL Q10 repeat_purchase_rate_pct when nothing is filtered).
+	measure 'Repeat Customer %' =
+			DIVIDE(
+			    CALCULATE(DISTINCTCOUNT(fact_orders[customer_key]), dim_customer[order_count] >= 2),
+			    [Active Customers]
+			)
+		formatString: 0.0%
+		displayFolder: Customers
+
+	column order_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: order_key
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: customer_key
+
+	column purchase_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: purchase_date
+
+	column purchase_hour
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: purchase_hour
+
+	column order_status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: order_status
+
+	column payment_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: payment_type
+
+	column items_value
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: items_value
+
+	column freight_value
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: freight_value
+
+	column review_score
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: review_score
+
+	column delivery_days
+		dataType: double
+		formatString: 0.0
+		summarizeBy: none
+		sourceColumn: delivery_days
+
+	column delay_days
+		dataType: double
+		formatString: 0.0
+		summarizeBy: none
+		sourceColumn: delay_days
+
+	column late_flag
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: late_flag
+
+	column low_review_flag
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: low_review_flag
+
+	column delay_bucket
+		dataType: string
+		sortByColumn: delay_bucket_order
+		summarizeBy: none
+		sourceColumn: delay_bucket
+
+	column delay_bucket_order
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: delay_bucket_order
+
+	partition fact_orders = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, "\") & "\fact_orders.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+			    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+			    ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {{"order_key", Int64.Type}, {"customer_key", Int64.Type}, {"purchase_date", type date}, {"purchase_hour", Int64.Type}, {"order_status", type text}, {"payment_type", type text}, {"items_value", type number}, {"freight_value", type number}, {"review_score", Int64.Type}, {"delivery_days", type number}, {"delay_days", type number}, {"late_flag", Int64.Type}, {"low_review_flag", Int64.Type}, {"delay_bucket", type text}, {"delay_bucket_order", Int64.Type}}, "en-US")
+			in
+			    ChangedTypes
