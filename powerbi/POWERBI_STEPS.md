@@ -96,10 +96,16 @@ With **no slicer selected**, the numbers must be:
 **MoM check (the one the plan asks for):** add a table visual with `dim_date[year_month]` and the measures `Total Revenue` and `MoM Growth %`, and compare
 with `sql/outputs/q03_mom_growth.csv` (first month 2017-01 is empty, 2017-02 is 103.97%, 2018-08 is -3.32%).
 
-## 5. Save as .pbix
+## 5. The saved .pbix
 
-1. **File > Save as**, choose file type **Power BI files (*.pbix)**, name it `dashboard.pbix`, and save it in the `powerbi` folder.
-   (The data is inside the pbix, so the file is large. Check its size before you commit it.)
+`powerbi/dashboard.pbix` (6.4 MB, data included) is saved and committed. You can open it directly, without the `powerbi/data/` CSV files.
+It was saved from the project in this folder, so it has the same 3 pages and 28 measures.
+
+To make a new one: **File > Save as**, choose the file type **Power BI files (*.pbix)** (the default can be "Power BI project"), name it
+`dashboard.pbix`, and save it in the `powerbi` folder. Check the size before you commit it.
+
+Notes:
+1. A pbix contains the data, so the `DataFolder` parameter is only needed when you click **Refresh**.
 2. Keep the project too. If you save the project again from Desktop, Desktop rewrites the TMDL and PBIR files in its own format
    (it adds `lineageTag` ids and more report settings). That is fine, but `build_project.py` would overwrite your changes if you run it again.
 

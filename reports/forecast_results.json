@@ -1,0 +1,62 @@
+{
+  "source": "notebooks/04_forecast.ipynb",
+  "months_used": 20,
+  "first_month": "2017-01",
+  "last_month": "2018-08",
+  "removed_months": [
+    "2016-09",
+    "2016-10",
+    "2016-12",
+    "2018-09"
+  ],
+  "best_model_by_rolling_mape": "Moving average (baseline)",
+  "rolling_backtest": {
+    "Moving average (baseline)": {
+      "mae": 122037.54,
+      "mape_pct": 13.13
+    },
+    "Linear regression": {
+      "mae": 203009.59,
+      "mape_pct": 23.22
+    },
+    "Holt (damped trend)": {
+      "mae": 129570.41,
+      "mape_pct": 14.54
+    }
+  },
+  "test_split": {
+    "Moving average (baseline)": {
+      "mae": 125781.96,
+      "mape_pct": 14.59
+    },
+    "Linear regression": {
+      "mae": 302850.13,
+      "mape_pct": 35.15
+    },
+    "Holt (damped trend)": {
+      "mae": 267284.85,
+      "mape_pct": 31.01
+    }
+  },
+  "forecast_months": [
+    "2018-09",
+    "2018-10",
+    "2018-11"
+  ],
+  "forecast_per_month": [
+    863390.0,
+    863390.0,
+    863390.0
+  ],
+  "forecast_low": [
+    750027.0,
+    750027.0,
+    750027.0
+  ],
+  "forecast_high": [
+    976753.0,
+    976753.0,
+    976753.0
+  ],
+  "range_pct": 13.13
+}

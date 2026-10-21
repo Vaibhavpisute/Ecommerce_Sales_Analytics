@@ -1,0 +1,55 @@
+{
+  "source": "notebooks/02_eda.ipynb (reads sql/outputs)",
+  "revenue_total": 13494400.74,
+  "orders_total": 98199,
+  "aov_all_orders": 137.42,
+  "customers_with_valid_order": 94983,
+  "repeat_customers": 2887,
+  "repeat_purchase_rate_pct": 3.04,
+  "first_full_month": {
+    "month": "2017-01",
+    "revenue": 120098.27
+  },
+  "last_full_month": {
+    "month": "2018-08",
+    "revenue": 848860.1
+  },
+  "peak_month": {
+    "month": "2017-11",
+    "revenue": 1003862.14
+  },
+  "avg_mom_growth_2017_pct": 22.68818181818182,
+  "avg_mom_growth_2018_pct": 2.4562499999999994,
+  "avg_revenue_2018_months": 917629.67625,
+  "weekend_order_share_pct": 23.015167764669833,
+  "orders_10_to_16h_share_pct": 45.18870333486543,
+  "busiest_weekday": "Monday",
+  "quietest_weekday": "Saturday",
+  "categories_total": 74,
+  "categories_for_80pct": 18,
+  "top3_categories": [
+    "health_beauty",
+    "watches_gifts",
+    "bed_bath_table"
+  ],
+  "top3_categories_share_pct": 25.87,
+  "unknown_category_revenue_share_pct": 1.32,
+  "cohort_month1_retention_avg_pct": 0.48368421052631577,
+  "cohort_month1_retention_min_pct": 0.22,
+  "cohort_month1_retention_max_pct": 0.71,
+  "new_customer_revenue_share_pct": 98.21326280013086,
+  "late_orders": 7655,
+  "on_time_orders": 88169,
+  "late_share_of_delivered_reviewed_pct": 7.988604107530472,
+  "low_review_pct_late": 54.11,
+  "low_review_pct_on_time": 9.22,
+  "avg_score_late": 2.5637,
+  "avg_score_on_time": 4.2941,
+  "top3_states": [
+    "SP",
+    "RJ",
+    "MG"
+  ],
+  "top3_states_share_pct": 63.35219328902189,
+  "top_state_share_pct": 38.2667398092996
+}

@@ -1,0 +1,67 @@
+{
+  "source": "notebooks/03_statistics_ab_test.ipynb",
+  "welch_ttest_real": {
+    "n_on_time": 88169,
+    "n_late": 7655,
+    "mean_on_time": 4.294116979890891,
+    "mean_late": 2.5636838667537556,
+    "difference": 1.7304331131371353,
+    "ci95_low": 1.6925166386361128,
+    "ci95_high": 1.7683495876381579,
+    "cohen_d": 1.446732530461892,
+    "p_value": 0.0,
+    "alpha": 0.05,
+    "decision": "reject H0"
+  },
+  "anova_real": {
+    "anova_p": 1.712530620831265e-67,
+    "eta_squared": 0.003180148761596463,
+    "kruskal_p": 3.442635364356881e-205,
+    "epsilon_squared": 0.009653984170940644,
+    "assumptions_hold": false,
+    "mean_voucher": 94.91,
+    "mean_credit_card": 143.67
+  },
+  "chi_square_real": {
+    "chi2": 175.6475137055994,
+    "p_value": 0.00015280617917737242,
+    "cramers_v": 0.02150146573899497,
+    "n_customers": 94983
+  },
+  "probability_real": {
+    "p_buy_again": 0.030394912773864798,
+    "p_buy_again_ci_low": 0.02932201184113439,
+    "p_buy_again_ci_high": 0.031505797254144784,
+    "p_late": 0.07988604107530473,
+    "p_low_given_late": 0.5410842586544742,
+    "p_low_given_on_time": 0.09220927990563577,
+    "risk_ratio": 5.868002214182821,
+    "risk_ratio_ci_low": 5.69894448504925,
+    "risk_ratio_ci_high": 6.042074997569823,
+    "p_late_given_low_review": 0.33751629726205995
+  },
+  "ab_test_SIMULATED": {
+    "label": "SIMULATED DATA, not real customers",
+    "seed": 42,
+    "assumed_base_rate": 0.03,
+    "assumed_mde": 0.005,
+    "alpha": 0.05,
+    "power": 0.8,
+    "sample_size_per_group": 19716,
+    "conversions_a": 571,
+    "conversions_b": 704,
+    "rate_a": 0.028961249746398864,
+    "rate_b": 0.03570703996753905,
+    "lift_pct": 23.292469352014,
+    "p_value": 0.00015280617917737242,
+    "ci95_low_points": 0.32546433950734543,
+    "ci95_high_points": 1.023693704720692,
+    "simulated_power": 0.8072,
+    "simulated_false_positive_rate": 0.051
+  },
+  "real_freight_context": {
+    "avg_items_value": 137.41892218861702,
+    "avg_freight": 22.82229238586951,
+    "freight_pct_of_items_value": 16.6078237424569
+  }
+}
