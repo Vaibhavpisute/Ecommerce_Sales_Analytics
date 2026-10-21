@@ -1,0 +1,27 @@
+Ecommerce_Sales_Analytics
+Copyright (c) 2026 Vaibhav Pisute
+
+CODE
+The source code in this repository (Python, SQL, DAX, Power Query M, the code cells of the notebooks and the
+build scripts) is licensed under the MIT License. See the file LICENSE.
+
+DATA
+This project analyses the "Brazilian E-Commerce Public Dataset by Olist", published on Kaggle:
+    https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+Credit: Olist, who released the dataset. The dataset is licensed under the Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International licence (CC BY-NC-SA 4.0):
+    https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+Files in this repository that contain Olist data, or numbers and charts derived from it, are shared under the
+same licence (CC BY-NC-SA 4.0). This applies to:
+  - excel/sales_report.xlsx and powerbi/dashboard.pbix (they contain order-level data)
+  - sql/outputs/*.csv, reports/*.csv, reports/*.json and reports/insights_report.pdf
+  - screenshots/ and the saved outputs inside the notebooks
+You may copy, share and adapt these files for non-commercial purposes if you give credit to Olist and
+distribute your changes under the same licence.
+
+The raw Olist files are not part of this repository. Download them from Kaggle under the dataset's own terms
+(see data/DATA_SOURCE.md and pipeline_ingest/README.md).
+
+Olist anonymised the data before publishing it. This project is independent and is not affiliated with
+or endorsed by Olist.

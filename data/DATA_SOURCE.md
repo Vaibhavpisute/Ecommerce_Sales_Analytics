@@ -3,7 +3,7 @@
 ## Dataset
 **Brazilian E-Commerce Public Dataset by Olist** (Kaggle: `olistbr/brazilian-ecommerce`).
 About 100k real, anonymised orders from a Brazilian marketplace, 2016 to 2018.
-Credit: Olist, who released the dataset. Licence: CC BY-NC-SA 4.0 (non-commercial use, share alike, give credit).
+Credit: Olist, who released the dataset. Licence: CC BY-NC-SA 4.0 (non-commercial use, share alike, give credit). See the file NOTICE in the repository root.
 Link: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 
 ## How the data got here

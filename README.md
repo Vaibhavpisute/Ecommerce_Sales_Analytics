@@ -158,6 +158,14 @@ Needs: Windows, Docker Desktop, Python 3.12, a Kaggle account (for the download)
 
 `requirements.txt` includes `pywin32`, which is only needed (and only installs) on Windows, for the Excel automation.
 
+## License
+
+- **Code:** [MIT License](LICENSE), copyright (c) 2026 Vaibhav Pisute.
+- **Data:** the Olist dataset is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+  Files in this repository that contain or are derived from it (the Excel and Power BI files, the SQL result files, the result tables,
+  the screenshots and the PDF report) are shared under the same licence: **non-commercial use only, credit Olist, share alike.**
+  Details are in [NOTICE](NOTICE). The raw dataset is not included: download it from Kaggle.
+
 ## Folder structure
 
 ```

@@ -18,3 +18,14 @@ powerbi/data/
 powerbi/dashboard.Report/
 powerbi/dashboard.SemanticModel/
 powerbi/dashboard.pbip
+
+# Local notes, plans, generated check logs and local tools (kept on disk, not published)
+PROJECT_PLAN.md
+PROGRESS.md
+CLAUDE.md
+.claude/
+excel/check_report.md
+reports/secret_scan.md
+reports/secret_scan.py
+reports/number_check.md
+sql/outputs/check_*.csv
