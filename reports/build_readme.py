@@ -166,7 +166,11 @@ Needs: Windows, Docker Desktop, Python 3.12, a Kaggle account (for the download)
 8. **Excel:** `python excel\\build_workbook.py`, `python excel\\add_excel_features.py`, `python excel\\check_and_export.py` (see `excel/EXCEL_STEPS.md`).
 9. **Power BI:** `python powerbi\\export_model_data.py`, then open `powerbi\\EcommerceSales.pbip` (see `powerbi/POWERBI_STEPS.md`).
 10. **Report and README:** `python reports\\build_insights_report.py`, then `python reports\\build_readme.py`.
-11. Stop the containers: `docker compose stop`.
+11. **Checks before publishing:** `python reports\\check_numbers.py` recomputes every number of this README and of the PDF (needs the PostgreSQL container) and writes
+    `reports/number_check.md`.
+12. Stop the containers: `docker compose stop`.
+
+`requirements.txt` includes `pywin32`, which is only needed (and only installs) on Windows, for the Excel automation.
 
 ## Folder structure
 

@@ -106,7 +106,7 @@ All tests use alpha = 0.05 and report an effect size, because with about 100,000
 A time-based split (last 3 months as test) and a rolling backtest compare a 3-month moving average, a linear regression (trend and month pattern) and Holt smoothing.
 **Result:** the simple moving average wins (rolling backtest MAPE 13.1%, against 23.2% for regression
 and 14.5% for Holt), because growth was flat in 2018. Forecast: about 863,390 per month
-(range 750,027 to 976,753). It is a method demo: short history, no holiday information.
+(range 750,062 to 976,718). It is a method demo: short history, no holiday information.
 
 ![Forecast](screenshots/forecast_01_actual_vs_predicted.png)
 
@@ -152,7 +152,11 @@ Needs: Windows, Docker Desktop, Python 3.12, a Kaggle account (for the download)
 8. **Excel:** `python excel\build_workbook.py`, `python excel\add_excel_features.py`, `python excel\check_and_export.py` (see `excel/EXCEL_STEPS.md`).
 9. **Power BI:** `python powerbi\export_model_data.py`, then open `powerbi\EcommerceSales.pbip` (see `powerbi/POWERBI_STEPS.md`).
 10. **Report and README:** `python reports\build_insights_report.py`, then `python reports\build_readme.py`.
-11. Stop the containers: `docker compose stop`.
+11. **Checks before publishing:** `python reports\check_numbers.py` recomputes every number of this README and of the PDF (needs the PostgreSQL container) and writes
+    `reports/number_check.md`.
+12. Stop the containers: `docker compose stop`.
+
+`requirements.txt` includes `pywin32`, which is only needed (and only installs) on Windows, for the Excel automation.
 
 ## Folder structure
 
