@@ -1,0 +1,12 @@
+.venv/
+.env
+data/raw/
+data/processed/*.parquet
+data/processed/*.csv
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+~$*.xlsx
+*.pbix.tmp
+**/.pbi/
+**/cache.abf
