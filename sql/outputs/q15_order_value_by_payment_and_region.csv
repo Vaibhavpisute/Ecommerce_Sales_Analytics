@@ -1,0 +1,60 @@
+level,region,state,payment_type,orders,revenue,avg_order_value,sd_order_value
+All orders,,,,98199,13494400.74,137.42,209.31
+Region,Central-West,,,5728,861825.09,150.46,243.69
+Region,North,,,1834,333814.28,182.01,264.51
+Region,Northeast,,,9305,1538209.28,165.31,242.19
+Region,South,,,13996,1938021.12,138.47,199.58
+Region,Southeast,,,67336,8822530.97,131.02,200.83
+State,Central-West,DF,,2120,300886.45,141.93,231.64
+State,Central-West,GO,,1998,287870.46,144.08,202.27
+State,Central-West,MS,,708,116754.65,164.91,346.21
+State,Central-West,MT,,902,156313.53,173.30,256.10
+State,North,AC,,81,15982.95,197.32,222.00
+State,North,AM,,147,22356.84,152.09,222.66
+State,North,AP,,68,13474.30,198.15,265.29
+State,North,PA,,969,178821.12,184.54,269.53
+State,North,RO,,246,46031.64,187.12,288.03
+State,North,RR,,45,7739.44,171.99,197.99
+State,North,TO,,278,49407.99,177.73,267.27
+State,Northeast,AL,,411,80314.81,195.41,266.41
+State,Northeast,BA,,3344,507108.83,151.65,230.66
+State,Northeast,CE,,1323,226264.06,171.02,232.59
+State,Northeast,MA,,736,119291.62,162.08,234.38
+State,Northeast,PB,,531,114874.10,216.34,366.55
+State,Northeast,PE,,1643,261739.94,159.31,226.90
+State,Northeast,PI,,490,86660.09,176.86,229.36
+State,Northeast,RN,,482,83034.98,172.27,231.95
+State,Northeast,SE,,345,58920.85,170.79,221.89
+State,South,PR,,4982,676883.06,135.87,198.58
+State,South,RS,,5415,742559.78,137.13,186.90
+State,South,SC,,3599,518578.28,144.09,218.49
+State,Southeast,ES,,2018,273532.13,135.55,265.04
+State,Southeast,MG,,11496,1573508.20,136.87,202.22
+State,Southeast,RJ,,12697,1811623.42,142.68,236.83
+State,Southeast,SP,,41125,5163867.22,125.57,183.75
+Payment type,,,boleto,19535,2377567.71,121.71,201.52
+Payment type,,,credit_card,74112,10647344.16,143.67,213.31
+Payment type,,,debit_card,1514,181110.72,119.62,226.08
+Payment type,,,unknown,1,134.97,134.97,
+Payment type,,,voucher,3037,288243.18,94.91,122.32
+Region and payment type,Central-West,,boleto,1243,153259.95,123.30,180.02
+Region and payment type,Central-West,,credit_card,4274,686573.57,160.64,261.80
+Region and payment type,Central-West,,debit_card,56,6103.24,108.99,103.21
+Region and payment type,Central-West,,voucher,155,15888.33,102.51,172.34
+Region and payment type,North,,boleto,421,68772.57,163.36,218.22
+Region and payment type,North,,credit_card,1330,254995.82,191.73,282.22
+Region and payment type,North,,debit_card,26,4217.79,162.22,147.33
+Region and payment type,North,,voucher,57,5828.10,102.25,146.76
+Region and payment type,Northeast,,boleto,1693,243667.20,143.93,226.97
+Region and payment type,Northeast,,credit_card,7159,1242909.81,173.62,248.91
+Region and payment type,Northeast,,debit_card,137,19718.72,143.93,218.84
+Region and payment type,Northeast,,voucher,316,31913.55,100.99,137.22
+Region and payment type,South,,boleto,3281,376091.07,114.63,165.44
+Region and payment type,South,,credit_card,10122,1493605.01,147.56,209.77
+Region and payment type,South,,debit_card,194,25733.97,132.65,249.92
+Region and payment type,South,,voucher,399,42591.07,106.74,133.94
+Region and payment type,Southeast,,boleto,12897,1535776.92,119.08,207.31
+Region and payment type,Southeast,,credit_card,51227,6969259.95,136.05,201.06
+Region and payment type,Southeast,,debit_card,1101,125337.00,113.84,228.50
+Region and payment type,Southeast,,unknown,1,134.97,134.97,
+Region and payment type,Southeast,,voucher,2110,192022.13,91.01,112.02

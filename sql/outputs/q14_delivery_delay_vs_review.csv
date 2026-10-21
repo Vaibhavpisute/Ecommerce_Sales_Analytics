@@ -1,0 +1,8 @@
+level,bucket_order,group_name,orders,avg_review_score,sd_review_score,low_score_pct,avg_delivery_days
+bucket,1,Early by 7+ days,70946,4.3169,1.1375,8.97,10.22
+bucket,2,On time (0-7 days early),17223,4.2004,1.1819,10.24,13.59
+bucket,3,Late 0-3 days,2634,3.7635,1.4085,19.21,21.07
+bucket,4,Late 3-7 days,1773,2.3158,1.5991,61.31,26.66
+bucket,5,Late more than 7 days,3248,1.7260,1.2548,78.48,42.33
+late_vs_on_time,1,On time or early,88169,4.2941,1.1472,9.22,10.88
+late_vs_on_time,2,Late,7655,2.5637,1.6582,54.11,31.39

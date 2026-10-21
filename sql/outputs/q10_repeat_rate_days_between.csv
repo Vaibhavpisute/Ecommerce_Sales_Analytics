@@ -1,0 +1,12 @@
+metric,value
+customers,94983
+repeat_customers,2887
+repeat_purchase_rate_pct,3.04
+customers_with_1_order,92096
+customers_with_2_orders,2651
+customers_with_3_orders,188
+customers_with_4_plus_orders,48
+order_gaps_counted,3216
+avg_days_between_orders,78.8
+median_days_between_orders,29.0
+same_day_share_pct,30.01
